@@ -1,9 +1,9 @@
 {
-    "inputFileName": "inputFileName.csv",
+    "inputFileName": "input.csv",
     "dataSourceFileName": "kp2imdb.csv",
-    "mappedOutputFileName": "mappedOutputFileName.csv",
-    "notMappedOutputFileName": "notMappedOutputFileName.csv",
-    "combinedOutputFileName": "combinedOutputFileName.csv",
+    "mappedOutputFileName": "result_mapped.csv",
+    "notMappedOutputFileName": "result_not_mapped.csv",
+    "combinedOutputFileName": "result_combined.csv",
     "inputColumn": "kp",
     "outputColumn": "imdb",
     "convertToFullImdbString": true

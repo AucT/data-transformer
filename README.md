@@ -63,9 +63,9 @@ data-transformer.exe -inputFileName="my_kpvotes.csv"
 У файлі `config.json` є багато значень:
 - `inputFileName` - ваша таблиця csv. Потрібно щоб було наявний ідентифікатор kp
 - `dataSourceFileName` - таблиця kp2imdb.csv. Цей файл є в комплекті. Тут має бути ідентифікатор kp та imdb
-- `mappedOutputFileName` - таблиця тільки тих ваших оцінок, де скрипт знайшов ідентифікатор imdb
-- `notMappedOutputFileName` - таблиця тільки тих ваших оцінок, де скрипт не знайшов ідентифікатор imdb
-- `combinedOutputFileName` - таблиця всіх ваших оцінок. Не знайдені imdb будуть пусті
+- `mappedOutputFileName` - таблиця оцінок, де програма знайшла ідентифікатор imdb
+- `notMappedOutputFileName` - таблиця оцінок, де програма не знайшла ідентифікатор imdb
+- `combinedOutputFileName` - таблиця всіх оцінок. Не знайдені imdb будуть пусті
 - `inputColumn` - колонка вашого ідентифікатора. Він має називатись так само як і в kp2imdb.csv
-- `outputColumn` - колонка вашого ідентифікатора 2, який скрипт візьме з kp2imdb.csv і додасть у вашу таблицю
+- `outputColumn` - колонка вашого ідентифікатора 2, який програма візьме з kp2imdb.csv і додасть у вашу таблицю
 - `convertToFullImdbString` - чи конвертувати число imdb в повний imdb. Наприклад 123 to tt0000123

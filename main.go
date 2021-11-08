@@ -48,7 +48,7 @@ func initialize() {
 	combinedOutputFileName := flag.String("combinedOutputFileName", "", "")
 	inputColumn := flag.String("inputColumn", "", "")
 	outputColumn := flag.String("outputColumn", "", "")
-	configFileName := flag.String("config", "config.json", "config.json")
+	configFileName := flag.String("config", "data-transformer.json", "data-transformer.json")
 
 	flag.Parse()
 

@@ -143,10 +143,10 @@ func mapCsv() {
 
 func generateNewCsv() {
 	csvFile, err := os.Open(config.InputFileName)
+	defer csvFile.Close()
 	checkError("Can't open "+config.InputFileName, err)
 
-	fmt.Println("Successfully Opened CSV file")
-	defer csvFile.Close()
+	fmt.Println("Successfully Opened " + config.InputFileName)
 
 	csvLines, err := csv.NewReader(csvFile).ReadAll()
 	checkError("Can't read "+config.InputFileName, err)

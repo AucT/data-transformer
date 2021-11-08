@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 	"strconv"
 	"time"
 )
@@ -79,11 +80,25 @@ func initialize() {
 }
 
 func readConfig(configFileName string) {
-	file, _ := os.Open(configFileName)
+	file, err := os.Open(configFileName)
 	defer file.Close()
+
+	if err != nil {
+		fmt.Println("Can't open "+configFileName, err)
+
+		ex, err := os.Executable()
+		checkError("Can't find executable path ", err)
+		exPath := filepath.Dir(ex)
+
+		filePath := filepath.Join(exPath, configFileName)
+		fmt.Println("Trying to open in executable folder " + filePath)
+
+		file, err = os.Open(filePath)
+		checkError("Can't open "+filePath, err)
+	}
 	decoder := json.NewDecoder(file)
-	err := decoder.Decode(&config)
-	checkError("Error:", err)
+	err = decoder.Decode(&config)
+	checkError("Error parsing config:", err)
 }
 func mapCsv() {
 	csvFile, err := os.Open(config.DataSourceFileName)

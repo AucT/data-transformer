@@ -102,10 +102,23 @@ func readConfig(configFileName string) {
 }
 func mapCsv() {
 	csvFile, err := os.Open(config.DataSourceFileName)
-	checkError("Can't open "+config.DataSourceFileName, err)
+
+	defer csvFile.Close()
+
+	if err != nil {
+		fmt.Println("Can't open "+config.DataSourceFileName, err)
+
+		ex, err := os.Executable()
+		checkError("Can't find executable path ", err)
+		exPath := filepath.Dir(ex)
+
+		filePath := filepath.Join(exPath, config.DataSourceFileName)
+		fmt.Println("Trying to open in executable folder " + filePath)
+		csvFile, err = os.Open(filePath)
+		checkError("Can't open "+filePath, err)
+	}
 
 	fmt.Println("Successfully Opened CSV file")
-	defer csvFile.Close()
 
 	csvLines, err := csv.NewReader(csvFile).ReadAll()
 	checkError("Can't read "+config.DataSourceFileName, err)
